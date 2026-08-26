@@ -1,0 +1,19 @@
+# Nunca versionar documento de cliente.
+# As fichas e os documentos de trabalho gerados pela skill contêm CPF, NIT,
+# número de benefício, CID e diagnóstico. Ficam na pasta do cliente no Drive,
+# nunca aqui.
+*.docx
+*.doc
+*.pdf
+*.png
+*.jpg
+*.jpeg
+
+# Saída temporária de renderização
+med/
+ctps/
+*_x/
+
+# Windows
+Thumbs.db
+desktop.ini
