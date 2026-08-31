@@ -36,12 +36,31 @@ refaça só a seção pedida e reescreva os dois arquivos preservando o resto.
 Se o caminho não foi informado, peça-o antes de qualquer outra coisa. Não tente
 adivinhar o cliente a partir do nome mencionado na conversa.
 
+## Material compartilhado
+
+Os scripts e a doutrina de leitura por tipo de documento ficam em
+`../previdenciario-base/`, ao lado desta skill, porque a skill de planejamento usa
+os mesmos. Aqui ficam só o formato da ficha e o do documento de trabalho.
+
+> **Todo caminho neste arquivo é relativo à pasta desta skill**, informada como
+> "Base directory for this skill" quando a skill carrega — **não** ao diretório de
+> trabalho da sessão. Antes do primeiro comando, guarde essa pasta numa variável e
+> use-a em tudo:
+>
+> ```bash
+> SKILL="<base directory desta skill>"
+> BASE="$SKILL/../previdenciario-base"
+> bash "$BASE/scripts/varrer-pasta.sh" "<pasta do cliente>"
+> ```
+>
+> Os exemplos abaixo usam `$BASE` e `$SKILL` nesse sentido.
+
 ## Fluxo
 
 ### 1. Varredura
 
 ```bash
-bash scripts/varrer-pasta.sh "<caminho da pasta do cliente>"
+bash "$BASE/scripts/varrer-pasta.sh" "<caminho da pasta do cliente>"
 ```
 
 Varre recursivamente. É necessário: `DOCUMENTOS MEDICOS` costuma ser pasta irmã de
@@ -63,7 +82,7 @@ Sinalize explicitamente:
   mandar, porque costumam ser longos e nem sempre interessam à análise previdenciária;
 - o custo dos escaneados: some as páginas dos arquivos `IMAGEM` e diga quantas são.
   Cem páginas de exame renderizadas é leitura cara e nem toda página tem valor
-  previdenciário. Proponha a triagem de `references/medicos.md` e deixe ela decidir.
+  previdenciário. Proponha a triagem de `$BASE/references/medicos.md` e deixe ela decidir.
 
 ### 3. Leitura
 
@@ -96,7 +115,7 @@ falta no CNIS.
 Para cada documento aprovado:
 
 ```bash
-bash scripts/ler-pdf.sh "<arquivo.pdf>" "<pasta de trabalho>"
+bash "$BASE/scripts/ler-pdf.sh" "<arquivo.pdf>" "<pasta de trabalho>"
 ```
 
 Sai o texto direto quando o PDF tem camada de texto. Quando é escaneado, sai uma
@@ -106,12 +125,12 @@ nunca dentro da pasta do cliente.
 
 Ordem de leitura, porque cada etapa informa a seguinte:
 
-1. **CNIS** — `references/cnis.md`
-2. **Pedidos administrativos** — `references/pedidos-administrativos.md`
-3. **Documentos médicos** — `references/medicos.md`
-4. **PPP** — `references/ppp.md`
-5. **Rurais** — `references/rural.md`
-6. **DTC/CTC** — `references/dtc-ctc.md`
+1. **CNIS** — `$BASE/references/cnis.md`
+2. **Pedidos administrativos** — `$BASE/references/pedidos-administrativos.md`
+3. **Documentos médicos** — `$BASE/references/medicos.md`
+4. **PPP** — `$BASE/references/ppp.md`
+5. **Rurais** — `$BASE/references/rural.md`
+6. **DTC/CTC** — `$BASE/references/dtc-ctc.md`
 
 Carregue a referência do tipo só quando aquele tipo aparecer na pasta. Cliente sem
 documento rural não precisa da seção rural.
@@ -164,20 +183,20 @@ Depois gere os dois arquivos.
 ## Saída
 
 Monte cada documento como `.txt` UTF-8 com a marcação descrita em
-`references/formato-ficha.md`, e converta:
+`$SKILL/references/formato-ficha.md`, e converta:
 
 ```bash
-powershell -ExecutionPolicy Bypass -File scripts/gerar-docx.ps1 -Origem "<entrada.txt>" -Destino "<saida.docx>"
+powershell -ExecutionPolicy Bypass -File "$BASE/scripts/gerar-docx.ps1" -Origem "<entrada.txt>" -Destino "<saida.docx>"
 ```
 
-**A ficha** — `references/formato-ficha.md` — vai para dois lugares:
+**A ficha** — `$SKILL/references/formato-ficha.md` — vai para dois lugares:
 
 - `<pasta do cliente>/ANÁLISE INICIAL/<NOME DO CLIENTE>.docx`
 - `H:/Drives compartilhados/CBA/EQUIPE/LARISSA MARGHOTI DOS SANTOS/2 - ANÁLISES INICIAIS/<NOME DO CLIENTE>.docx`
 
 Se a subpasta `ANÁLISE INICIAL` não existir, crie-a com esse nome exato, acentuado.
 
-**O documento de trabalho** — `references/formato-trabalho.md` — vai só para
+**O documento de trabalho** — `$SKILL/references/formato-trabalho.md` — vai só para
 `<pasta do cliente>/ANÁLISE INICIAL/<NOME DO CLIENTE> - TRABALHO.docx`.
 
 Nunca sobrescreva uma ficha existente sem antes mostrar o que vai mudar.
@@ -186,7 +205,7 @@ Nunca sobrescreva uma ficha existente sem antes mostrar o que vai mudar.
 
 **Nunca afirme uma regra legal de memória.** Carência, período de graça, regra de
 transição, limite de ruído por época, conversão de tempo especial, prazo decadencial
-— tudo isso se consulta em `references/legislacao.md` e nos PDFs da pasta de
+— tudo isso se consulta em `$BASE/references/legislacao.md` e nos PDFs da pasta de
 legislação do escritório, citando o dispositivo. Sem ter lido o texto, escreva que
 o ponto depende de conferência legal. Um número legal errado escrito com segurança
 é o pior defeito que esta skill pode ter.
@@ -231,11 +250,11 @@ ilegibilidade invisível.
 
 **Diagnóstico não é incapacidade** e **agente nocivo no PPP não é tempo especial.**
 Os dois erros são os mais comuns da análise previdenciária e o roteiro insiste em
-ambos. Ver `references/medicos.md` e `references/ppp.md`.
+ambos. Ver `$BASE/references/medicos.md` e `$BASE/references/ppp.md`.
 
 ## Ambiente
 
 Detalhes de ferramentas, caminhos e limitações desta máquina em
-`references/ambiente.md`. O essencial: `pdftotext` lê o que tem texto, `pdftoppm`
-renderiza o que é imagem, e o `.docx` é gerado por `scripts/gerar-docx.ps1` sem
+`$BASE/references/ambiente.md`. O essencial: `pdftotext` lê o que tem texto, `pdftoppm`
+renderiza o que é imagem, e o `.docx` é gerado por `$BASE/scripts/gerar-docx.ps1` sem
 depender de Word, Python ou pandoc.
