@@ -16,11 +16,27 @@
         E assim que se preenche um placeholder que se repete: o primeiro SET
         pega a primeira ocorrencia, o segundo pega a seguinte, e assim por diante.
 
+    SET_EXATO|<texto integral>|<texto novo>
+        Como SET, mas so casa quando o trecho e IGUAL ao procurado, nao apenas
+        contido nele. Use quando um rotulo curto de tabela e prefixo de um
+        titulo: "Cenario 1" na celula versus "Cenario 1 - Sem reconhecimentos"
+        no cabecalho. Sem isso, o SET acertaria o titulo.
+
+        Atencao: substituir por um texto que ainda contenha o procurado faz o
+        proximo SET reencontrar a mesma ocorrencia. Ao renomear linhas
+        clonadas, de a cada uma um texto que nao case mais.
+
     DUP_LINHA|<texto numa celula da linha modelo>|<n>
         Deixa a linha de tabela repetida n vezes no total (clona n-1).
 
     DUP_BLOCO|<texto do 1o paragrafo>|<texto do ultimo paragrafo>|<n>
         Deixa o bloco repetido n vezes no total. Serve para cenarios.
+
+    SET_PARA|<texto que identifica o paragrafo>|<novo texto do paragrafo inteiro>
+        Substitui TODO o texto do paragrafo. Use quando o campo tem texto fixo
+        dos dois lados e nao da para editar so o placeholder, como em
+        'IRRF (quando aplicavel): R$ [VALOR] ou "nao aplicavel"'.
+        Perde formatacao inline dentro do paragrafo.
 
     DEL_PARA|<texto que identifica o paragrafo>
         Remove o paragrafo inteiro. Use para as notas internas.
@@ -28,6 +44,13 @@
     DEL_ATE|<texto inicial>|<texto final>
         Remove do bloco inicial ao final, inclusive, incluindo tabelas no meio.
         Use para subsecoes que nao se aplicam ao caso.
+
+  BUSCA - diferenca que importa: SET, SET_PARA e DEL_PARA procuram o texto
+  dentro de UM trecho (<w:t>), entao nao acham frases que o Word partiu em
+  varios trechos - e comum o rotulo e o placeholder ficarem separados, como
+  em "Viabilidade: [baixa/media/alta]". Nesses casos procure so pelo colchete.
+  Ja o texto final de DEL_ATE e DUP_BLOCO e procurado no paragrafo inteiro,
+  entao aceita a frase completa.
 
   ORDEM DAS DIRETIVAS - importa, e nao e obvia:
 
@@ -89,6 +112,16 @@ function Find-T([string]$texto) {
   return $null
 }
 
+# Primeiro <w:t> cujo texto e EXATAMENTE $texto. Serve para distinguir uma
+# celula curta de um titulo que a contem: "Cenario 1" na tabela comparativa
+# versus "Cenario 1 - Sem reconhecimentos adicionais" no cabecalho da secao.
+function Find-T-Exato([string]$texto) {
+  foreach ($t in $xml.SelectNodes('//w:t', $ns)) {
+    if ($t.InnerText -eq $texto) { return $t }
+  }
+  return $null
+}
+
 # Sobe do no ate o ancestral cujo pai e o <w:body>: o "bloco" de topo,
 # que pode ser um <w:p> ou uma <w:tbl>.
 function Get-Bloco($no) {
@@ -144,6 +177,34 @@ foreach ($linha in $linhas) {
       $t = Find-T $alvo
       if ($null -eq $t) { throw "Linha ${nLinha}: texto nao encontrado no modelo -> '$alvo'" }
       $t.InnerText = $t.InnerText.Replace($alvo, $novo)
+      $aplicadas++
+    }
+
+    'SET_EXATO' {
+      if ($campos.Count -lt 2) { throw "Linha ${nLinha}: SET_EXATO precisa de 2 campos" }
+      $alvo = $campos[1]
+      $novo = ''
+      if ($campos.Count -ge 3) { $novo = ($campos[2..($campos.Count-1)] -join '|') }
+      $t = Find-T-Exato $alvo
+      if ($null -eq $t) { throw "Linha ${nLinha}: nenhum trecho igual a -> '$alvo'" }
+      $t.InnerText = $novo
+      $aplicadas++
+    }
+
+    'SET_PARA' {
+      if ($campos.Count -lt 2) { throw "Linha ${nLinha}: SET_PARA precisa de 2 campos" }
+      $alvo = $campos[1]
+      $novo = ''
+      if ($campos.Count -ge 3) { $novo = ($campos[2..($campos.Count-1)] -join '|') }
+      $t = Find-T $alvo
+      if ($null -eq $t) { throw "Linha ${nLinha}: texto nao encontrado -> '$alvo'" }
+      $p = Get-Ancestral $t 'p'
+      if ($null -eq $p) { throw "Linha ${nLinha}: '$alvo' nao esta dentro de um paragrafo" }
+      $primeiro = $true
+      foreach ($no in $p.SelectNodes('.//w:t', $ns)) {
+        if ($primeiro) { $no.InnerText = $novo; $primeiro = $false }
+        else { $no.InnerText = '' }
+      }
       $aplicadas++
     }
 

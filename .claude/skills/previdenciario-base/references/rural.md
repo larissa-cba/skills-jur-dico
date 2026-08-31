@@ -3,6 +3,33 @@
 Seção 7 do roteiro. Análise cronológica e individualizada, quase sempre apoiada em
 documentos escaneados e antigos — renderize e leia como imagem.
 
+## Antes de tudo: qual dos dois usos é o do caso
+
+Tempo rural aparece na análise previdenciária de duas formas completamente
+diferentes, e confundi-las produz um relatório errado.
+
+| | **Acréscimo de tempo rural** | **Enquadramento por categoria profissional** |
+|---|---|---|
+| Situação | atividade rural **sem registro** — economia familiar, boia-fria, trabalho na infância | vínculo rural **assinado na CTPS**, já constante do CNIS |
+| O que se busca | averbar tempo que hoje não existe no CNIS | converter tempo comum, que já existe, em tempo **especial** |
+| Efeito | soma tempo de contribuição | aumenta o tempo pelo fator de conversão |
+| Prova | início de prova material mais prova testemunhal | a própria anotação da CTPS |
+| Onde entra no relatório de planejamento | seção de período rural | seção de **atividade especial** |
+
+**Vínculo rural assinado na carteira não é acréscimo de tempo rural.** Ele já conta.
+O que se discute é a conversão em especial, pela categoria profissional de
+trabalhador rural. Se todos os períodos rurais do caso estiverem registrados, a
+seção de período rural do relatório não se aplica e deve ser removida.
+
+Sinais de que o caso é de **enquadramento**, não de acréscimo: cargo de rurícola,
+trabalhador rural ou lavrador anotado na CTPS; contrato de safra ou entre safra
+regido pela **Lei 5.889/73**; remuneração por produção agrícola, como por árvore ou
+por classe de talhão; empregador com objeto agropecuário ou florestal. Ver
+`ppp.md` para o registro na tabela de atividade especial.
+
+O resto desta referência trata do **acréscimo** de tempo rural, que é o caso quando
+a atividade não está registrada.
+
 Documento em nome de terceiro **não é imprestável**. Em regime de economia familiar,
 o que importa é o vínculo do cliente com o titular do documento, a composição do
 grupo familiar, o período, a atividade e a compatibilidade com as demais provas.

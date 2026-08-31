@@ -46,6 +46,32 @@ produz tempo, contribuições e idade diferentes. Escolha a data que o relatóri
 adotar, use a mesma em tudo, preencha `[DATA-BASE DO CÁLCULO]` com ela e confirme na
 parada do mapeamento.
 
+## Campos com regra própria do escritório
+
+**Modalidade de recolhimento.** Não se inventa o código: ele se deduz de como as
+contribuições atuais aparecem no CNIS.
+
+| Como aparece no CNIS | O que significa | O que escrever |
+|---|---|---|
+| `AGRUPAMENTO DE CONTRATANTES/COOPERATIVAS` | prestador de serviço ou retirada de pró-labore | prestador de serviço ou pró-labore, **sem código GPS** |
+| `RECOLHIMENTO` no sequencial ativo ou no último recolhido | pagamento por carnê | contribuinte individual ou facultativo, com o código abaixo |
+
+Havendo carnê, o código depende de duas coisas — se há trabalho remunerado, e o que
+a projeção assume:
+
+| | projeção de 1 salário mínimo e aposentadoria por idade | contribuição acima de 1 salário mínimo, ou projeção por tempo de contribuição |
+|---|---|---|
+| **contribuinte individual** (com trabalho remunerado) | **1163** | **1007** |
+| **facultativo** (demais casos) | **1473** | **1406** |
+
+**IRRF.** Traga o valor **apenas quando o Previus indicar**. Quando não indicar,
+escreva `não aplicável`. Não estime, não escreva "a apurar".
+
+**Retorno pelo investimento projetado.** Use o resultado da **subtração** que o
+Previus apresenta em `Retorno sobre o investimento:` — a linha no formato
+`R$ recebido − R$ investido = R$ resultado`. Use o resultado, não o total líquido
+recebido, que é a primeira parcela da conta.
+
 ## O que provavelmente não está lá
 
 Os níveis 2 e 3 pedem, por simulação: **valor investido até a DIB**, **retorno

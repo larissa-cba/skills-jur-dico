@@ -120,3 +120,16 @@ o rodapé fica em branco. Apague a seção ao chegar nela.
 
 Ao terminar, o script lista os campos entre colchetes que sobraram. **Nenhum pode
 sobrar.** Campo em colchetes chegando ao cliente é erro visível na primeira leitura.
+
+---
+
+## Quando a seção 5.2 não se aplica
+
+O período rural só ocupa a subseção 5.2 quando se trata de **acréscimo** de tempo
+não registrado. Quando os vínculos rurais estão assinados na CTPS e já constam do
+CNIS, o que se discute é **conversão de tempo comum em especial por enquadramento
+de categoria profissional** — e isso pertence à subseção 5.1, na mesma tabela dos
+demais períodos especiais, com o agente informado como enquadramento por categoria.
+
+Nesse caso remova a 5.2 junto com as demais que não se aplicarem. Ver
+`../previdenciario-base/references/rural.md`, que distingue os dois usos.
