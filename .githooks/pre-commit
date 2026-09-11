@@ -1,0 +1,37 @@
+#!/bin/sh
+# Bloqueia commits que contenham segredos, chaves ou tokens.
+# Ativado via: git config core.hooksPath .githooks
+
+staged_files=$(git diff --cached --name-only --diff-filter=ACM)
+[ -z "$staged_files" ] && exit 0
+
+blocked=0
+
+# 1) Nomes de arquivo que nunca deveriam ser versionados
+for f in $staged_files; do
+    case "$f" in
+        *.env|*.env.*|*.pem|*.key|*.pfx|*.p12|*.crt|id_rsa|id_rsa.*|id_ed25519|id_ed25519.*|*credentials*.json|*secret*.json|*.secrets|.claude/settings.local.json|.mcp.json)
+            echo "BLOQUEADO: '$f' parece um arquivo de segredo/credencial e não deve ser commitado." >&2
+            blocked=1
+            ;;
+    esac
+done
+
+# 2) Padrões de segredo dentro do conteúdo adicionado
+pattern='AKIA[0-9A-Z]{16}|ghp_[A-Za-z0-9]{30,}|github_pat_[A-Za-z0-9_]{30,}|sk-[A-Za-z0-9]{20,}|xox[baprs]-[A-Za-z0-9-]{10,}|-----BEGIN [A-Z ]*PRIVATE KEY-----|(api[_-]?key|secret|token|password|senha)[[:space:]]*[:=][[:space:]]*[\"'"'"'][^\"'"'"']{8,}[\"'"'"']'
+
+matches=$(git diff --cached -U0 -- $staged_files | grep -E '^\+[^+]' | grep -inE "$pattern")
+
+if [ -n "$matches" ]; then
+    echo "BLOQUEADO: possível segredo/token detectado no conteúdo do commit:" >&2
+    echo "$matches" >&2
+    blocked=1
+fi
+
+if [ "$blocked" = "1" ]; then
+    echo "" >&2
+    echo "Se for falso positivo, ajuste .githooks/pre-commit ou use 'git commit --no-verify' (com cautela)." >&2
+    exit 1
+fi
+
+exit 0

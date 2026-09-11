@@ -17,3 +17,21 @@ ctps/
 # Windows
 Thumbs.db
 desktop.ini
+
+# Segredos, chaves e configuração local — nunca versionar
+.env
+.env.*
+*.pem
+*.key
+*.pfx
+*.p12
+*.crt
+id_rsa
+id_rsa.*
+id_ed25519
+id_ed25519.*
+*credentials*.json
+*secret*.json
+*.secrets
+.claude/settings.local.json
+.mcp.json
