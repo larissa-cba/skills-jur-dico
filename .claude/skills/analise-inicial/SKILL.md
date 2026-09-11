@@ -180,6 +180,19 @@ Três perguntas são obrigatórias nesta parada, porque não se resolvem sozinha
 
 Depois gere os dois arquivos.
 
+### 7. Parecer de atendimento — opcional
+
+Com a ficha e o documento de trabalho **já gravados** na pasta do cliente, pergunte
+se há interesse em elaborar o **parecer de atendimento** para enviar ao cliente.
+
+- **Não** → a análise termina. Não gere nada.
+- **Sim** → pergunte quem é o especialista responsável, a data da reunião, o resumo
+  do que o cliente relatou e a data limite para envio dos documentos; então gere o
+  parecer a partir do modelo do escritório.
+
+Procedimento completo — o que é fixo e o que se preenche, fotos, linguagem, checklist
+e a receita de diretivas — em `$SKILL/references/parecer.md`.
+
 ## Saída
 
 Monte cada documento como `.txt` UTF-8 com a marcação descrita em
@@ -200,6 +213,10 @@ Se a subpasta `ANÁLISE INICIAL` não existir, crie-a com esse nome exato, acent
 `<pasta do cliente>/ANÁLISE INICIAL/<NOME DO CLIENTE> - TRABALHO.docx`.
 
 Nunca sobrescreva uma ficha existente sem antes mostrar o que vai mudar.
+
+**O parecer de atendimento**, quando pedido na etapa 7, vai para
+`<pasta do cliente>/ANÁLISE INICIAL/PARECER DE ATENDIMENTO - <NOME DO CLIENTE>.docx`
+e `.pdf`, preenchendo o modelo do escritório com `$BASE/scripts/preencher-template.ps1`.
 
 ## Regras que não se negociam
 

@@ -33,14 +33,22 @@ try {
   throw "Word nao disponivel nesta maquina. O .docx continua valido; entregue sem o PDF e avise."
 }
 
+# Se a instancia ja tinha documentos abertos, e o Word de alguem da equipe: o
+# Windows pode entregar a instancia em uso em vez de criar uma nova. Nesse caso
+# fecha-se so o documento aberto aqui, nunca o Word inteiro.
+$documentosAntes = 0
+try { $documentosAntes = $word.Documents.Count } catch {}
+
 try {
-  $word.Visible = $false
+  if ($documentosAntes -eq 0) { $word.Visible = $false }
   $word.DisplayAlerts = 0
-  $doc = $word.Documents.Open($origemAbs, $false, $true)
+  # ReadOnly, sem adicionar a lista de recentes
+  $doc = $word.Documents.Open($origemAbs, $false, $true, $false)
   # 17 = wdExportFormatPDF
   $doc.ExportAsFixedFormat($destinoAbs, 17)
+  if (-not (Test-Path -LiteralPath $destinoAbs)) { throw "O Word nao gerou o PDF: $destinoAbs" }
   Write-Output ("OK: " + $destinoAbs)
 } finally {
   if ($null -ne $doc) { try { $doc.Close($false) } catch {} }
-  if ($null -ne $word) { try { $word.Quit() } catch {} }
+  if ($null -ne $word -and $documentosAntes -eq 0) { try { $word.Quit() } catch {} }
 }
