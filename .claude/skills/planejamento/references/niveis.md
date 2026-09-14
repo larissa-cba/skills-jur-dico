@@ -1,34 +1,36 @@
 # Os três níveis
 
-Os templates ficam em:
+Os três níveis não mudaram de conteúdo com a troca de formato — continuam
+sendo profundidade de análise, decisão comercial, não técnica (ver
+`SKILL.md`). O que muda é como cada nível vira slides e páginas: os dois
+documentos de referência do escritório (a apresentação e o relatório da
+Marilda) são um caso de **nível 3 completo**, com todas as seções condicionais
+presentes. Este arquivo descreve o que entra e o que sai em cada nível, em
+termos do catálogo de blocos de `design-sistema.md`.
 
-```
-H:/Drives compartilhados/CBA/EQUIPE/LARISSA MARGHOTI DOS SANTOS/2 - ANÁLISES INICIAIS/planejamento previdenciário - modelo/
-├── Template_Nivel1_Diagnostico.docx
-├── Template_Nivel2_Completo.docx
-└── Template_Nivel3_Completo_Averbacao.docx
-```
-
-**Leia o template antes de montar as diretivas.** Ele é o instrumento de trabalho do
-escritório e pode ter mudado desde que esta referência foi escrita. O que está aqui
-descreve o que cada nível cobre e onde estão as armadilhas — não substitui abrir o
-arquivo e ver os campos que existem hoje.
+**Leia o catálogo de blocos antes deste arquivo.** Aqui só se diz *quais*
+blocos aparecem em cada nível — a doutrina de cada bloco (classe CSS, quando
+usar) está em `design-sistema.md`.
 
 ---
 
 ## Nível 1 — Diagnóstico
 
-Retrato da situação atual. **Não contempla estratégia de contribuição futura** — o
-próprio texto do template diz isso, e prometer simulação aqui contradiz o documento.
+Retrato da situação atual. **Não contempla estratégia de contribuição
+futura** — não prometa simulação de cenário com contribuição projetada
+neste nível.
 
-Seções: identificação · objetivo · análise e plano de correção do CNIS, com uma
-tabela de pendências · cenários de aposentadoria **com o que já existe**, sem novas
-contribuições · considerações finais.
+**Apresentação**: capa · situação de hoje (`.linha-stats`) · situação
+previdenciária atual (par de cartões `.cartao`, tempo de contribuição e
+carência) · plano de correção do CNIS, se houver pendência (`.grade.col3`
+ou tabela `table.dados`) · cenário(s) de aposentadoria **com o que já
+existe**, sem nova contribuição — um `.numerado4` ou um slide por cenário
+com `.simulacoes` contendo só a base atual · encerramento (disclaimer +
+assinatura).
 
-A tabela de pendências tem quatro colunas: `Sequencial / Empresa`, `O que consta`,
-`Consequência`, `Correção`. Uma linha por pendência — duplique com `DUP_LINHA`.
-
-Cada cenário traz data prevista, RMI estimada, requisito faltante e observação.
+**Relatório**: mesma ordem, em prosa. Sem a seção "Os N caminhos possíveis"
+com múltiplas bases de contribuição — o relatório do nível 1 descreve um
+único caminho, o que já existe.
 
 ---
 
@@ -36,100 +38,89 @@ Cada cenário traz data prevista, RMI estimada, requisito faltante e observaçã
 
 Acrescenta ao nível 1:
 
-**Documentos analisados**, em três blocos: previdenciários, trabalhistas, e os **não
-apresentados** — este último é onde entra o que faltou, e ele espelha o balanço de
-cobertura do documento de trabalho.
+**Documentos analisados e pendentes** — bloco de duas colunas (uma clara,
+uma escura) listando o que foi analisado e o que falta, espelhando o
+balanço de cobertura do documento de trabalho.
 
-**Síntese da vida contributiva**, com tabela de `Período · Empresa/Atividade ·
-Categoria · Situação no CNIS`. Uma linha por vínculo.
+**Síntese da vida contributiva** — `table.dados`/`table.relatorio` com
+`Período · Empresa/Atividade · Categoria · Situação no CNIS`, uma linha por
+vínculo, com `tr.realce` nos vínculos com pendência.
 
-**Classificação das pendências** em três grupos, antes da tabela detalhada:
-`leves` (monitorar), `relevantes` (alteram tempo, carência, RMI ou data) e `críticas`
-(podem gerar indeferimento ou exigir ação administrativa ou judicial).
+**Pendências por gravidade** — bloco de duas colunas classificando em
+`leves` (monitorar), `relevantes` (alteram tempo, carência, RMI ou data) e,
+se houver, `críticas` (podem gerar indeferimento ou exigir ação
+administrativa ou judicial). Se o caso tiver pendência crítica, dê a ela um
+bloco próprio (`.cartao verde` ou `.destaque-caixa`) em vez de escondê-la na
+lista — é o que o exemplo do escritório faz com o vínculo ausente do CNIS.
 
-**Tempo de contribuição e carência**, com o tempo faltante e a data provável.
+**Cenários com simulação de contribuição futura** — um slide por cenário
+(`.simulacoes`), cada um com uma ou mais simulações (S1.1, S1.2...). Por
+simulação: base salarial, alíquota e código GPS, RMI, valor investido,
+retorno projetado e payback. No nível 2 os cenários são **regras
+alternativas** — cada um é um caminho diferente de aposentadoria, não uma
+camada incremental sobre o anterior.
 
-**Cenários com simulação de contribuição futura.** Cada cenário tem uma ou mais
-simulações (S1.1, S1.2…) e um quadro-resumo. Por simulação: base salarial,
-coeficiente, alíquota, modalidade e código GPS, RMI, IRRF quando aplicável, valor
-investido, retorno projetado e payback em meses.
+**Comparativo financeiro** (`table.dados`/`table.relatorio`) e
+**comparativo final** com a linha `tr.recomendado` — mesma lógica dos dois
+documentos de referência.
 
-**Análise financeira** comparando cenários por RMI, investimento até a DIB, payback e
-custo-benefício.
-
-**Conclusão técnica**, com providências separadas entre cliente e escritório.
+**Recomendação técnica** (`.rec-tecnica`) e **providências de cada parte**
+(`.grade.col2`, cartão claro + cartão verde).
 
 ---
 
-## Nível 3 — Completo com averbação
+## Nível 3 — Completo com reconhecimento de direitos
 
-Parte do nível 2 e muda três coisas.
+Parte do nível 2 e acrescenta reconhecimento de direitos específicos —
+exatamente o que os dois documentos de referência do escritório mostram.
 
-**Documentos analisados** vira granular: previdenciários e trabalhistas · atividade
-especial · rurais · PCD · indenização de contribuições em atraso · não apresentados.
-As subseções 3.2 a 3.5 **só entram quando aplicáveis** — a nota interna diz isso.
+**Documentos analisados** fica granular quando o caso pedir: previdenciários
+e trabalhistas · atividade especial · rurais · PCD · indenização de
+contribuições em atraso · não apresentados. Só entram as subseções que o
+caso tiver — não force uma coluna vazia.
 
-**Seção 5 — Reconhecimento de direitos específicos**, que não existe nos outros
-níveis. Quatro subseções, também condicionais:
+**Reconhecimento de direitos específicos**, um bloco de duas colunas
+(`.col2`, texto + `.cartao cinza` de "serviço indicado") por direito
+aplicável:
 
-| Subseção | Traz |
+| Direito | O bloco traz |
 |---|---|
-| 5.1 Atividade especial | tabela empresa/cargo/período/agente/documento, mais conclusão com viabilidade e serviço indicado |
-| 5.2 Período rural | período, início de prova material, viabilidade, serviço indicado |
-| 5.3 PCD | indícios de impedimento de longo prazo, documentos, viabilidade |
-| 5.4 Indenização em atraso | período, valor estimado, impacto, viabilidade |
+| Atividade especial | período/agente/documento, viabilidade, serviço indicado |
+| Período rural | período, início de prova material, viabilidade, serviço indicado |
+| PCD | indícios de impedimento de longo prazo, documentos médicos, condição para compensar |
+| Indenização de contribuições em atraso | período, valor estimado (`.grade.col2` com 2 cartões de valor + 2 cartões de explicação, como no exemplo), efeito no coeficiente |
 
-**Cenários incrementais.** Aqui os cenários não são regras alternativas, são camadas:
-sem reconhecimentos · com atividade especial · com especial e rural · aposentadoria
-especial. O quadro de cada um é `Data prevista · Idade na data · RMI estimada` — sem
-as colunas de payback do nível 2, que migram para a análise financeira.
+**Cenários incrementais.** Aqui os cenários não são regras alternativas, são
+**camadas**: sem reconhecimentos · com um reconhecimento · com mais de um ·
+via alternativa (ex.: PCD). Cada `.numerado4`/`.simulacoes` mostra o efeito
+de uma camada a mais sobre data e valor — não misture com a lógica de
+"regras alternativas" do nível 2.
 
-Acrescenta ainda **comparativo final** entre todos os cenários e **serviços jurídicos
-indicados**, com motivo, urgência e benefício esperado por serviço.
-
----
-
-## As notas internas
-
-Os templates 2 e 3 contêm parágrafos começando por `Nota interna:`. Eles instruem
-quem monta o documento e **nunca podem chegar ao cliente**. Remova todos com
-`DEL_PARA`, e remova as subseções que eles mandam remover com `DEL_ATE`.
-
-Um exemplo do nível 3, na seção 3:
-
-> Nota interna: as subseções 3.2, 3.3, 3.4 e 3.5 devem constar no planejamento
-> apenas quando aplicáveis ao caso concreto. Ex.: se o caso envolve apenas
-> reconhecimento de atividade especial, remova as subseções 3.3 (rural), 3.4 (PCD)
-> e 3.5 (indenização) antes de enviar ao cliente.
-
-Registre no documento de trabalho cada remoção e o motivo. É o que permite conferir
-depois que a subseção saiu porque não se aplicava, e não por descuido.
+**Comparativo final entre todos os cenários** e **serviços jurídicos
+indicados** (`table.dados`/`table.relatorio` com motivo, urgência e
+benefício esperado por serviço) — última seção de conteúdo antes de
+providências e encerramento.
 
 ---
 
-## Ordem das diretivas, na prática
+## Quando a atividade rural não vira seção própria
 
-O script `preencher-template.ps1` explica a mecânica. O que importa aqui:
-
-1. **Duplique primeiro** todas as linhas de tabela e blocos de cenário.
-2. **Depois preencha e apague na ordem do documento**, de cima para baixo.
-
-O erro que essa ordem evita: se o Cenário 2 vai ser removido e ele contém `[DATA]`,
-apagá-lo só no fim faz o `SET` do `[DATA]` do rodapé acertar o cenário condenado, e
-o rodapé fica em branco. Apague a seção ao chegar nela.
-
-Ao terminar, o script lista os campos entre colchetes que sobraram. **Nenhum pode
-sobrar.** Campo em colchetes chegando ao cliente é erro visível na primeira leitura.
-
----
-
-## Quando a seção 5.2 não se aplica
-
-O período rural só ocupa a subseção 5.2 quando se trata de **acréscimo** de tempo
-não registrado. Quando os vínculos rurais estão assinados na CTPS e já constam do
-CNIS, o que se discute é **conversão de tempo comum em especial por enquadramento
-de categoria profissional** — e isso pertence à subseção 5.1, na mesma tabela dos
-demais períodos especiais, com o agente informado como enquadramento por categoria.
-
-Nesse caso remova a 5.2 junto com as demais que não se aplicarem. Ver
+O período rural só ocupa um bloco de "reconhecimento de direito" quando se
+trata de **acréscimo** de tempo não registrado. Quando os vínculos rurais
+já constam do CNIS, o que se discute é **conversão de tempo comum em
+especial por enquadramento de categoria profissional** — isso entra na
+tabela de atividade especial, com o agente informado como "enquadramento
+por categoria", não em bloco próprio. Ver
 `../previdenciario-base/references/rural.md`, que distingue os dois usos.
+
+## Quando há RPPS
+
+Havendo CTC, ficha financeira, mapa de tempo de serviço ou cálculo de
+regime próprio, o caso tem RPPS. A apresentação e o relatório, como os
+documentos de referência, só tratam do RGPS.
+
+Monte o RGPS normalmente e **registre a limitação** no documento de trabalho
+e na entrega: quais arquivos de RPPS existem, o que eles indicariam, e que
+os cenários do regime próprio ficaram de fora. Não force um bloco de RPPS
+no meio dos slides — o documento passaria a contradizer a própria abertura
+("segurada vinculada ao RGPS").

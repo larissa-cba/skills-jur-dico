@@ -92,14 +92,16 @@ por conta própria custa a confiança no relatório.
 
 ## Como montar
 
-Duplique o bloco do cenário no template com `DUP_BLOCO`, tantas vezes quantos forem
-os cenários, e as linhas dos quadros com `DUP_LINHA`. Depois preencha na ordem do
-documento.
+Cada cenário vira um bloco `.simulacoes` (um slide na apresentação, uma
+tabela `table.relatorio` no relatório) — copie o bloco do
+`modelo-apresentacao.html`/`modelo-relatorio.html` uma vez por cenário e
+preencha. Ver `design-sistema.md` para a classe de cada peça.
 
 No nível 2, os cenários são **regras alternativas** — cada um é um caminho diferente
 de aposentadoria. No nível 3, são **camadas incrementais**: sem reconhecimentos, com
 especial, com especial e rural, aposentadoria especial. Cada camada mostra o efeito
-de um reconhecimento a mais sobre data e valor. Não misture as duas lógicas.
+de um reconhecimento a mais sobre data e valor. Não misture as duas lógicas — ver
+`niveis.md`.
 
 ## Quando há RPPS
 

@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Entendendo o seu planejamento previdenciário — [NOME DA CLIENTE]</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  @page { size: 210mm 297mm; margin: 0; }
+  body { width: 210mm; }
+  .pagina {
+    width: 210mm; height: 297mm; padding: 20mm 22mm 22mm;
+    position: relative; page-break-after: always;
+    display: flex; flex-direction: column;
+  }
+  .pagina:last-child { page-break-after: auto; }
+
+  .cabecalho { display:flex; justify-content:space-between; align-items:baseline;
+    font-size: 10px; letter-spacing:.12em; text-transform:uppercase; font-weight:700;
+    padding-bottom: 8px; border-bottom: 1px solid var(--borda); margin-bottom: 22px; }
+  .cabecalho .esq { color: var(--verde); }
+  .cabecalho .dir { color: var(--bege); }
+
+  .rodape { display:flex; justify-content:space-between;
+    font-size: 10px; color:#7a7a7a; padding-top: 8px; border-top: 1px solid var(--borda);
+    margin-top: auto; }
+
+  .conteudo { flex: 1 0 auto; }
+
+  .pagina h1.titulo-relatorio { font-size: 30px; line-height:1.2; color: var(--verde); margin-bottom: 18px; max-width: 150mm; }
+  .pagina h2 { font-size: 19px; color: var(--verde); margin: 26px 0 12px; }
+  .pagina h3 { font-size: 14.5px; color: var(--texto); margin: 18px 0 8px; font-family: var(--f-corpo); font-weight: 700; }
+  .pagina p { font-size: 12.3px; line-height: 1.62; margin: 0 0 12px; color: var(--texto); }
+  .pagina p b, .pagina p strong { font-weight: 700; }
+
+  .definicao { background: var(--off-white); padding: 14px 18px; margin: 4px 0 16px; }
+  .definicao p { margin: 0 0 8px; font-size: 12px; }
+  .definicao p:last-child { margin-bottom:0; }
+
+  .destaque-caixa { background: var(--verde); color: var(--branco); padding: 18px 22px; margin: 10px 0 18px; }
+  .destaque-caixa p { color: var(--branco); font-family: var(--f-titulo); font-size: 15.5px; line-height: 1.5; margin:0; }
+
+  table.relatorio { width:100%; border-collapse: collapse; font-size: 11px; margin: 6px 0 18px; }
+  table.relatorio th { background: var(--verde); color:var(--branco); text-align:left; padding: 8px 10px; font-weight:600; }
+  table.relatorio td { padding: 8px 10px; border-bottom: 1px solid var(--borda); vertical-align: top; line-height:1.45; }
+
+  .byline { display:flex; justify-content:space-between; font-size:11px; color:#7a7a7a;
+    border-top:1px solid var(--borda); border-bottom:1px solid var(--borda); padding: 8px 0; margin-bottom: 22px; }
+
+  .assinatura-final { font-family: var(--f-titulo); font-size: 14px; line-height: 1.8; margin-top: 10px; }
+</style>
+</head>
+<body>
+
+<!-- ================================================================
+     PÁGINA 1 — abertura. Única página sem .cabecalho: o título grande
+     faz esse papel. Tem .byline no lugar do cabeçalho corrido.
+     Sempre a mesma abertura de conversa: "onde você está hoje".
+     ================================================================ -->
+<section class="pagina">
+  <div class="conteudo">
+    <h1 class="titulo-relatorio">Entendendo o seu<br>planejamento previdenciário</h1>
+    <div class="byline">
+      <div>[Nome completo da cliente] · [mês por extenso] de [ano]</div>
+      <div>(48) 99934-9470 · contato@cristhianebarreto.com.br</div>
+    </div>
+    <p>Este texto acompanha o relatório de planejamento previdenciário e serve para que você possa reler, com calma, tudo o que foi conversado no atendimento. [Ajuste a segunda frase para descrever a ordem real deste relatório.]</p>
+    <p>A análise foi feita com base em [liste aqui os documentos-base: CNIS, CTPS, contratos, documentação médica...] e nos cálculos elaborados até a data-base de [DD/MM/AAAA].</p>
+    <h2>Onde você está hoje</h2>
+    <p>[Parágrafo em segunda pessoa: idade, vínculo previdenciário, categoria de contribuição, qualidade de segurado(a).]</p>
+    <p>[Parágrafo com o tempo de contribuição e a carência atuais, em negrito os números-chave, como <b>13 anos, 9 meses e 16 dias</b> e <b>154 contribuições</b>.]</p>
+    <div class="definicao">
+      <p><b>Tempo de contribuição</b> é a soma dos períodos em que você trabalhou ou contribuiu. Ele influencia principalmente o valor do benefício.</p>
+      <p><b>Carência</b> é o número mínimo de contribuições mensais exigido para ter direito ao benefício. É a carência que hoje determina a data em que você poderá se aposentar.</p>
+    </div>
+    <p>[Parágrafo de fechamento da página: o que falta e a data projetada, em negrito.]</p>
+  </div>
+  <div class="rodape"><div>[Nome completo da cliente] · [mês] de [ano]</div><div>(48) 99934-9470 · contato@cristhianebarreto.com.br</div></div>
+</section>
+
+<!-- ================================================================
+     PÁGINA-PADRÃO — a partir da 2ª. Cabeçalho corrido nas duas colunas
+     (nome do escritório à esquerda, "Planejamento previdenciário" à
+     direita), conteúdo livre, rodapé corrido igual ao da página 1.
+     Use h2 para seção, h3 para subseção, .definicao para termos
+     técnicos, table.relatorio para tabelas.
+     ================================================================ -->
+<section class="pagina">
+  <div class="cabecalho"><div class="esq">Cristhiane Barreto</div><div class="dir">Planejamento previdenciário</div></div>
+  <div class="conteudo">
+    <h2 style="margin-top:0;">[Título da seção]</h2>
+    <p>[parágrafo]</p>
+    <h3>[Subtítulo, quando a seção tem mais de um ponto]</h3>
+    <p>[parágrafo, com <b>trechos em negrito</b> para os números e datas que sustentam a conclusão]</p>
+  </div>
+  <div class="rodape"><div>[Nome completo da cliente] · [mês] de [ano]</div><div>(48) 99934-9470 · contato@cristhianebarreto.com.br</div></div>
+</section>
+
+<!-- ================================================================
+     PÁGINA COM TABELA — mesmo padrão, ilustrando table.relatorio.
+     ================================================================ -->
+<section class="pagina">
+  <div class="cabecalho"><div class="esq">Cristhiane Barreto</div><div class="dir">Planejamento previdenciário</div></div>
+  <div class="conteudo">
+    <h3 style="margin-top:0;">[Título da tabela]</h3>
+    <table class="relatorio">
+      <thead><tr><th>[Coluna 1]</th><th>[Coluna 2]</th><th>[Coluna 3]</th></tr></thead>
+      <tbody>
+        <tr><td>[valor]</td><td>[valor]</td><td>[valor]</td></tr>
+        <tr><td>[valor]</td><td>[valor]</td><td>[valor]</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="rodape"><div>[Nome completo da cliente] · [mês] de [ano]</div><div>(48) 99934-9470 · contato@cristhianebarreto.com.br</div></div>
+</section>
+
+<!-- ================================================================
+     PÁGINA DA RECOMENDAÇÃO — única com .destaque-caixa (fundo verde).
+     Uma vez por relatório, na seção "O que recomendamos".
+     ================================================================ -->
+<section class="pagina">
+  <div class="cabecalho"><div class="esq">Cristhiane Barreto</div><div class="dir">Planejamento previdenciário</div></div>
+  <div class="conteudo">
+    <h2 style="margin-top:0;">O que recomendamos</h2>
+    <div class="destaque-caixa">
+      <p>[Cenário e simulação recomendados, em uma frase direta e completa — este texto também aparece, quase igual, no slide de recomendação técnica da apresentação.]</p>
+    </div>
+    <p>[Por que esse caminho: equilíbrio entre segurança jurídica, data, valor e viabilidade documental.]</p>
+  </div>
+  <div class="rodape"><div>[Nome completo da cliente] · [mês] de [ano]</div><div>(48) 99934-9470 · contato@cristhianebarreto.com.br</div></div>
+</section>
+
+<!-- ================================================================
+     ÚLTIMA PÁGINA — observações/disclaimer + assinatura.
+     Texto de disclaimer é padrão do escritório; ajuste só nomes/datas.
+     ================================================================ -->
+<section class="pagina">
+  <div class="cabecalho"><div class="esq">Cristhiane Barreto</div><div class="dir">Planejamento previdenciário</div></div>
+  <div class="conteudo">
+    <h2 style="margin-top:0;">Observações importantes</h2>
+    <p>Os cálculos e projeções apresentados foram elaborados com base na legislação previdenciária vigente na data da análise, bem como nos documentos, dados e informações disponibilizados por você até aquele momento. Os resultados constituem projeções, não sendo possível garantir sua manutenção ou concretização futura, uma vez que poderão sofrer alterações em razão de eventual mudança na legislação, alteração das condições contributivas, interrupção ou irregularidade dos recolhimentos, bem como de outros fatores que possam impactar o direito ou o valor do benefício.</p>
+    <p>A escolha entre as opções e estratégias apresentadas é de sua responsabilidade, cabendo à advogada responsável apresentar os cenários possíveis, esclarecer seus respectivos impactos, riscos e vantagens e orientar quanto à alternativa que, à luz das informações disponíveis e dos objetivos declarados, se mostre mais adequada. A decisão final caberá exclusivamente a você.</p>
+    <p style="margin-top:40px;">Florianópolis/SC, [mês] de [ano].</p>
+    <div class="assinatura-final">
+      Cristhiane Constantino Barreto — OAB/SC 20.738<br>
+      [Nome do(a) advogado(a) responsável] — OAB/SC [número]
+    </div>
+  </div>
+  <div class="rodape"><div>[Nome completo da cliente] · [mês] de [ano]</div><div>(48) 99934-9470 · contato@cristhianebarreto.com.br</div></div>
+</section>
+
+</body>
+</html>

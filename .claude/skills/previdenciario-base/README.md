@@ -30,6 +30,7 @@ ao lado das skills que a usam.
 | `ler-pdf.sh` | entrega o conteúdo de um PDF: texto direto, ou páginas renderizadas em PNG quando é escaneado; **detecta renderização parcial e avisa** |
 | `_poppler.sh` | encontra o poppler instalado via winget e o põe no PATH; carregado com `source` |
 | `gerar-docx.ps1` | converte texto marcado em `.docx` sem depender de Word, Python ou pandoc |
+| `html-para-pdf.ps1` | converte uma página HTML/CSS em PDF usando o Edge instalado, em modo headless |
 
 ### `references/`
 

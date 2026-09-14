@@ -1,13 +1,17 @@
 ---
 name: planejamento
-description: Relatório de planejamento previdenciário nos três níveis do escritório, a partir dos documentos e cálculos da pasta PLANEJAMENTO PREVIDENCIÁRIO do cliente. Preenche o template oficial preservando timbre e rodapé, e entrega também um documento de trabalho interno.
+description: Planejamento previdenciário nos três níveis do escritório, a partir dos documentos e cálculos da pasta PLANEJAMENTO PREVIDENCIÁRIO do cliente. Gera uma apresentação para a chamada com a cliente e um relatório narrativo para ela reler depois, no padrão visual da marca CBA, mais um documento de trabalho interno.
 disable-model-invocation: true
 ---
 
 # Planejamento previdenciário
 
-Lê a pasta do cliente e preenche um dos três templates do escritório. Entrega o
-relatório em `.docx` e `.pdf`, mais um documento de trabalho interno.
+Lê a pasta do cliente e monta dois documentos voltados à cliente — uma
+**apresentação** (para a chamada de devolutiva) e um **relatório narrativo**
+(para ela reler depois, em segunda pessoa) — mais um documento de trabalho
+interno. Os dois primeiros saem como PDF, no padrão visual da marca CBA, e são
+construídos como HTML/CSS antes de virar PDF (ver "Montagem" abaixo) — não são
+`.pptx`/`.docx` nativos.
 
 ## Invocação
 
@@ -28,7 +32,8 @@ Scripts e doutrina de leitura ficam em `previdenciario-base`, ao lado desta skil
 são os mesmos da `analise-inicial`. Leia o `README.md` de lá antes de começar: as
 regras sobre custo, cobertura e legislação valem aqui integralmente.
 
-Aqui ficam só os três níveis e os formatos de saída desta skill.
+Aqui ficam só os três níveis e os formatos de saída desta skill. O
+`html-para-pdf.ps1` usado na montagem também mora em `$BASE/scripts/`.
 
 > **Todo caminho neste arquivo é relativo à pasta desta skill**, informada como
 > "Base directory for this skill" quando a skill carrega — **não** ao diretório de
@@ -93,66 +98,101 @@ números em vez de calculá-los: errar payback é errar a recomendação.
 
 ### 5. Montagem
 
-Escreva um arquivo de diretivas e preencha o template:
+Três arquivos, nesta ordem. **Leia `$SKILL/references/design-sistema.md` antes de
+escrever a primeira linha de HTML** — é lá que estão as cores, as fontes e o
+catálogo de blocos de layout. Não invente classe nova sem necessidade: os dois
+documentos de referência do escritório usam um vocabulário pequeno e repetido.
+
+**a) Fontes.** Copie os dois arquivos do Drive para uma pasta `fonts/` ao lado
+de onde os HTML vão ser escritos — eles não ficam no repositório (ver o porquê
+em `design-sistema.md`, seção Licença):
 
 ```bash
-powershell -ExecutionPolicy Bypass -File "$BASE/scripts/preencher-template.ps1" \
-  -Modelo "<template do nível>" -Diretivas "<diretivas.txt>" -Destino "<saida.docx>"
+mkdir -p "<pasta de trabalho>/fonts"
+cp "H:/Drives compartilhados/CBA/MARKETING/0 - ID VISUAL ESCRITÓRIO/FONTES/AlbraTRIAL/AlbraTRIAL-Regular.otf" "<pasta de trabalho>/fonts/Albra-Regular.otf"
+cp "H:/Drives compartilhados/CBA/MARKETING/0 - ID VISUAL ESCRITÓRIO/FONTES/AlbraTRIAL/AlbraTRIAL-Regular-Italic.otf" "<pasta de trabalho>/fonts/Albra-RegularItalic.otf"
+cp "$SKILL/assets/style.css" "<pasta de trabalho>/style.css"
 ```
 
-O formato das diretivas e a ordem obrigatória estão no cabeçalho do próprio script.
-O que preencher em cada nível está em `$SKILL/references/niveis.md`.
+**b) HTML.** Copie `$SKILL/assets/modelo-apresentacao.html` e
+`$SKILL/assets/modelo-relatorio.html` para a pasta de trabalho e preencha os
+dois — o mapeamento de cenários da parada anterior vira os slides/páginas de
+cenário, um bloco por cenário ou por simulação, conforme `niveis.md` mandar
+para o nível do caso. Remova os blocos de exemplo que não se aplicam (o
+catálogo em `design-sistema.md` diz qual bloco serve para qual conteúdo);
+não deixe bloco de exemplo sobrando por preguiça de apagar.
 
-Depois exporte o PDF:
+Antes de renderizar, confira que não sobrou nenhum `[ALGO ENTRE COLCHETES]`:
 
 ```bash
-powershell -ExecutionPolicy Bypass -File "$BASE/scripts/exportar-pdf.ps1" -Origem "<saida.docx>"
+grep -no '\[[^]]*\]' "<pasta de trabalho>/apresentacao.html" "<pasta de trabalho>/relatorio.html"
 ```
 
-Se o Word não estiver disponível, entregue só o `.docx` e avise. Falta de PDF nunca
-impede a entrega.
+Qualquer ocorrência é bloqueio, não observação — preencha antes de seguir.
+
+**c) PDF.**
+
+```bash
+powershell -ExecutionPolicy Bypass -File "$BASE/scripts/html-para-pdf.ps1" -Origem "<pasta de trabalho>/apresentacao.html"
+powershell -ExecutionPolicy Bypass -File "$BASE/scripts/html-para-pdf.ps1" -Origem "<pasta de trabalho>/relatorio.html"
+```
+
+Abra os PDFs gerados e confira visualmente: nenhuma tabela ou cartão pode
+"vazar" para fora do slide, e nenhuma página do relatório pode ter texto
+sobrepondo o rodapé — ambos são sinal de que um bloco precisa ser encurtado
+ou movido para o próximo slide/página (ver "Paginação" em `design-sistema.md`).
+Ajuste o HTML e rode `html-para-pdf.ps1` de novo até fechar limpo.
 
 ### 6. Terceira parada — resultado
 
-Entregue os dois arquivos e reúna as dúvidas restantes num bloco só.
+Entregue os três arquivos e reúna as dúvidas restantes num bloco só.
 
 ## Saída
 
-**O relatório** — `<pasta do cliente>/PLANEJAMENTO PREVIDENCIÁRIO/RELATÓRIO PLANEJAMENTO PREVIDENCIÁRIO - <NOME DO CLIENTE>.docx`, mais o `.pdf` de mesmo nome.
-Se a subpasta não existir, crie com esse nome exato, acentuado.
+**A apresentação** — `<pasta do cliente>/PLANEJAMENTO PREVIDENCIÁRIO/APRESENTAÇÃO PLANEJAMENTO PREVIDENCIÁRIO - <NOME DO CLIENTE>.pdf`, mais o `.html` de mesmo nome (é o fonte editável — quem abrir depois edita o HTML e roda `html-para-pdf.ps1` de novo, não mexe direto no PDF).
+
+**O relatório** — mesma pasta, `RELATÓRIO PLANEJAMENTO PREVIDENCIÁRIO - <NOME DO CLIENTE>.pdf` e `.html`.
+
+Se a subpasta `PLANEJAMENTO PREVIDENCIÁRIO` não existir, crie com esse nome
+exato, acentuado. Não copie a pasta `fonts/` nem `style.css` para dentro da
+pasta do cliente — eles são insumo de geração, o PDF já leva a fonte embutida.
 
 **O documento de trabalho** — mesma pasta, sufixo ` - TRABALHO.docx`, gerado com
-`gerar-docx.ps1`. Formato em `$SKILL/references/formato-trabalho.md`.
+`gerar-docx.ps1`. Formato em `$SKILL/references/formato-trabalho.md`. Esse
+continua `.docx`: é uso interno da equipe, não vai para a cliente, e não precisa
+do padrão visual da marca.
 
-Nunca sobrescreva relatório existente sem antes mostrar o que muda.
+Nunca sobrescreva apresentação, relatório ou documento de trabalho existentes
+sem antes mostrar o que muda.
 
 ## Regras que não se negociam
 
-**Nenhuma nota interna chega ao cliente.** Os templates 2 e 3 trazem parágrafos
-começando por `Nota interna:` que instruem o que remover antes de enviar. Remova
-todos, sempre, e remova também as subseções que não se aplicam ao caso. Registre no
-documento de trabalho o que foi removido e por quê.
+**Nenhum comentário de autoria nem bloco de exemplo chega ao cliente.** Os
+`modelo-*.html` têm comentários HTML (`<!-- ... -->`) marcando cada bloco —
+eles não aparecem em navegador nem em PDF, mas apague os blocos de exemplo
+que você não usou. Um bloco de exemplo esquecido no meio do documento real
+aparece no PDF, porque HTML renderiza o que existe, comentário ou não.
 
-**Nenhum campo entre colchetes chega ao cliente.** O script avisa quando sobra
-`[ALGUMA COISA]` no documento. Trate esse aviso como bloqueio, não como observação.
+**Nenhum campo entre colchetes chega ao cliente.** Ver o `grep` da montagem,
+passo (b). Trate qualquer ocorrência como bloqueio.
 
-**Use as escalas do template, não as suas.** O relatório vai para o cliente e as
-escalas foram escolhidas para esse leitor: `viabilidade baixa/média/alta`, pendências
-`leves/relevantes/críticas`, `custo-benefício bom/regular/baixo`, `segurança jurídica
-alta/média/baixa`. As etiquetas `forte / depende de complementação / controvertido`
-ficam só no documento de trabalho.
+**Use as escalas já estabelecidas, não as suas.** Os documentos vão para a
+cliente e as escalas foram escolhidas para esse leitor: `viabilidade
+baixa/média/alta`, pendências `leves/relevantes/críticas`, `custo-benefício
+bom/regular/baixo`, `segurança jurídica alta/média/baixa`. As etiquetas
+`forte / depende de complementação / controvertido` ficam só no documento de
+trabalho.
 
-**O código GPS vai no campo que já existe.** `Modalidade de recolhimento: [facultativo
-/ contribuinte individual — código GPS]` é onde entra o código, por exemplo
-`contribuinte individual mensal — código 1007`. Não crie seção de instruções de
-pagamento: o template não a prevê.
+**O código GPS entra na linha de detalhe da simulação**, junto da alíquota —
+por exemplo `Alíquota: 20% — R$ 1.296,80 (GPS 1007)`, como no catálogo de
+blocos. Não crie seção separada de instruções de pagamento.
 
-**Caso com RPPS fica pela metade, e isso precisa ser dito.** Os três templates
-afirmam, na identificação, que o segurado é vinculado ao RGPS, e só tratam dele.
-Havendo CTC, ficha financeira, mapa de tempo de serviço ou cálculo de regime próprio
-na pasta, faça o RGPS e **avise com todas as letras**, no documento de trabalho e na
-entrega, que os cenários do RPPS ficaram de fora e que o caso precisa de tratamento
-manual até existir template com regime próprio.
+**Caso com RPPS fica pela metade, e isso precisa ser dito.** A apresentação e
+o relatório, como os dois documentos de referência, tratam só do RGPS.
+Havendo CTC, ficha financeira, mapa de tempo de serviço ou cálculo de regime
+próprio na pasta, monte o RGPS e **avise com todas as letras**, no documento
+de trabalho e na entrega, que os cenários do RPPS ficaram de fora e que o
+caso precisa de tratamento manual até existir um padrão para regime próprio.
 
 **Nunca afirme regra legal de memória** — carência, regra de transição, pedágio,
 pontuação, alíquota. Consulte `$BASE/references/legislacao.md`.
