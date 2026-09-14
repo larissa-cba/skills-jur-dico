@@ -14,6 +14,14 @@ med/
 ctps/
 *_x/
 
+# Fontes de marca — Albra (AlbraTRIAL) tem licença de avaliação, não
+# comercial confirmada. A skill `planejamento` copia os .otf do Drive para
+# a pasta de trabalho do cliente a cada execução; nunca devem ficar aqui.
+*.otf
+*.ttf
+*.woff
+*.woff2
+
 # Windows
 Thumbs.db
 desktop.ini

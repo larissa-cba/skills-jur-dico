@@ -49,8 +49,9 @@ H:/Drives compartilhados/CBA/EQUIPE/LARISSA MARGHOTI DOS SANTOS/2 - ANÁLISES IN
 |---|---|
 | `pdftotext` | vem no Git Bash (`/mingw64/bin`) |
 | `pdftoppm`, `pdfinfo` | poppler instalado via winget; `scripts/_poppler.sh` acha o caminho |
-| PowerShell | disponível; usado para gerar `.docx` |
+| PowerShell | disponível; usado para gerar `.docx` e para converter HTML em PDF |
 | Word | instalado, mas **não é necessário** para gerar `.docx` |
+| Microsoft Edge | instalado (`Program Files (x86)\Microsoft\Edge\Application\msedge.exe`); usado em modo headless por `scripts/html-para-pdf.ps1` para renderizar HTML/CSS em PDF com fidelidade visual — é assim que a skill `planejamento` gera apresentação e relatório no padrão da marca |
 | Python, pandoc, LibreOffice, tesseract | **não instalados** |
 
 Não há OCR. Documento escaneado é lido renderizando a página em PNG e interpretando
