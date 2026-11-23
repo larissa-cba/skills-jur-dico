@@ -173,7 +173,7 @@ aparecem no extrato. Ver `cnis.md` antes de afirmar o efeito de qualquer um.
 ## Onde salvar
 
 - `<pasta do cliente>/ANÁLISE INICIAL/<NOME DO CLIENTE>.docx`
-- `H:/Drives compartilhados/CBA/EQUIPE/LARISSA MARGHOTI DOS SANTOS/2 - ANÁLISES INICIAIS/<NOME DO CLIENTE>.docx`
+- `H:/Drives compartilhados/CBA/EQUIPE/LARISSA - JURIDICO/2 - ANÁLISES INICIAIS/<NOME DO CLIENTE>.docx`
 
 O nome do arquivo é o nome completo do cliente em maiúsculas, como nas fichas
 existentes. Se já houver ficha com esse nome, mostre o que vai mudar antes de

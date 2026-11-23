@@ -205,7 +205,7 @@ powershell -ExecutionPolicy Bypass -File "$BASE/scripts/gerar-docx.ps1" -Origem 
 **A ficha** — `$SKILL/references/formato-ficha.md` — vai para dois lugares:
 
 - `<pasta do cliente>/ANÁLISE INICIAL/<NOME DO CLIENTE>.docx`
-- `H:/Drives compartilhados/CBA/EQUIPE/LARISSA MARGHOTI DOS SANTOS/2 - ANÁLISES INICIAIS/<NOME DO CLIENTE>.docx`
+- `H:/Drives compartilhados/CBA/EQUIPE/LARISSA - JURIDICO/2 - ANÁLISES INICIAIS/<NOME DO CLIENTE>.docx`
 
 Se a subpasta `ANÁLISE INICIAL` não existir, crie-a com esse nome exato, acentuado.
 

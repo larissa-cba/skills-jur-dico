@@ -3,7 +3,7 @@
 O escritório mantém um acervo curado em:
 
 ```
-H:/Drives compartilhados/CBA/EQUIPE/LARISSA MARGHOTI DOS SANTOS/0 - LEGISLAÇÃO PREV/
+H:/Drives compartilhados/CBA/EQUIPE/LARISSA - JURIDICO/0 - LEGISLAÇÃO PREV/
 ```
 
 Conteúdo:
@@ -20,8 +20,21 @@ Conteúdo:
 | `Súmulas TNU.pdf` | jurisprudência consolidada da Turma Nacional de Uniformização |
 | `TEMA 1300 STF.docx` | tese vinculante |
 | `I+Jornada+de+Direito+da+Seguridade+Social.pdf` | enunciados doutrinários |
+| `Tabela profissões 1964.pdf` | Quadro Anexo ao Decreto 53.831/64 — tempo especial até 05/03/1997 |
+| `Decreto de 79 - profissões.pdf` | Decreto 83.080/79, Anexos I (agentes) e II (grupos profissionais) — tempo especial até 05/03/1997 |
+| `nr-15-atualizada-2025.pdf` e `nr-15-anexo-*.pdf` | NR-15: limites de tolerância e atividades insalubres por agente |
+| `nr-16-atualizada-2025-ii.pdf` | NR-16: atividades perigosas |
+| `portaria_092014-LINACH.pdf` | LINACH — lista nacional de agentes cancerígenos, com CAS |
 
-Todos são legíveis por texto — use `scripts/ler-pdf.sh` e busque o dispositivo.
+Leitura: quase todos têm texto — use `scripts/ler-pdf.sh` e busque o dispositivo.
+**Os dois decretos de 1964 e 1979 são escaneados** e precisam ser renderizados;
+o de 1979 tem 236 páginas. O mapa de páginas, para renderizar só o necessário, está
+em `agentes-quimicos.md`, seção 2.
+
+**Lacuna conhecida:** o PDF do Decreto 3.048/99 não traz o **Anexo IV** (agentes
+nocivos a partir de 1997), e o Decreto 2.172/97 não está no acervo. Enquadramento
+de período posterior a 05/03/1997 por código do Anexo IV fica **pendente de
+conferência** até o anexo entrar no acervo.
 
 ## A regra
 

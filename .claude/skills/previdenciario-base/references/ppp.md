@@ -72,6 +72,14 @@ PPP ou LTCAT.
 Havendo agente potencialmente **cancerígeno**, sinalize expressamente para análise
 individualizada — o tratamento jurídico é específico.
 
+> **Produto não é agente.** "Óleo mineral", "óleo diesel", "graxa", "solvente",
+> "tinta", "produtos químicos" são produtos. Entendimento do escritório: o agente é
+> aceito só se o PPP o traz **exatamente como na NR-15 ou na LINACH** (mesmo produto,
+> mesma atividade ou qualificação) **ou** traz o **composto**. Fora disso, não passa
+> de **depende de complementação**. Antes de concluir sobre qualquer
+> agente químico, leia `agentes-quimicos.md` — tem a régua por período, o mapa do
+> acervo (Decretos 53.831/64 e 83.080/79, NR-15, NR-16, LINACH) e exemplos.
+
 ## Responsável pelos registros ambientais
 
 Nome, registro profissional, período de responsabilidade, datas de início e fim, e
