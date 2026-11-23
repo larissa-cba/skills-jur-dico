@@ -31,7 +31,7 @@ No mesmo bloco, confirme o **benefício analisado** que você vai informar na se
 ## Modelo
 
 ```
-H:/Drives compartilhados/CBA/EQUIPE/LARISSA MARGHOTI DOS SANTOS/4 - JURÍDICO/CLOSER_PARECER_DE_ATENDIMENTO_v2.docx
+H:/Drives compartilhados/CBA/EQUIPE/LARISSA - JURIDICO/4 - JURÍDICO/CLOSER_PARECER_DE_ATENDIMENTO_v2.docx
 ```
 
 **Leia o modelo antes de montar as diretivas.** O quadro da equipe e os textos fixos

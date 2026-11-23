@@ -21,7 +21,7 @@ recursiva e a classificação é por conteúdo.
 **Fichas prontas** (cerca de cem, úteis como referência de estilo):
 
 ```
-H:/Drives compartilhados/CBA/EQUIPE/LARISSA MARGHOTI DOS SANTOS/2 - ANÁLISES INICIAIS/
+H:/Drives compartilhados/CBA/EQUIPE/LARISSA - JURIDICO/2 - ANÁLISES INICIAIS/
 ```
 
 **Roteiro e modelo** — na mesma pasta: `ROTEIRO DE ANÁLISE INICIAL.docx` e
