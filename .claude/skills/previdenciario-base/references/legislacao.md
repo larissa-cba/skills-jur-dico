@@ -25,11 +25,29 @@ Conteúdo:
 | `nr-15-atualizada-2025.pdf` e `nr-15-anexo-*.pdf` | NR-15: limites de tolerância e atividades insalubres por agente |
 | `nr-16-atualizada-2025-ii.pdf` | NR-16: atividades perigosas |
 | `portaria_092014-LINACH.pdf` | LINACH — lista nacional de agentes cancerígenos, com CAS |
+| `ofcircular46DIRBEN-INSS3.pdf` | Ofício-Circular nº 46/DIRBEN/INSS, de 13/09/2019 — comprovação da atividade de segurado especial após a Lei 13.846/2019 |
+| `anexo_i___autodeclaracao_do_segurado_especial_rural.pdf` | Anexo I do Ofício 46 — autodeclaração do segurado especial rural |
+| `autodeclaracao-do-segurado-especial-pescador-pdf.pdf` | Anexo II do Ofício 46 — autodeclaração do segurado especial pescador |
+
+Segurado especial (produtor rural, pescador artesanal, economia familiar): o mapa dos
+dispositivos de todos esses arquivos está em `segurado-especial.md`.
+
+**Súmulas da TNU:** a extração com `-layout` desalinha número e texto das súmulas.
+Para citar número, extraia com `pdftotext -raw` e confira.
 
 Leitura: quase todos têm texto — use `scripts/ler-pdf.sh` e busque o dispositivo.
 **Os dois decretos de 1964 e 1979 são escaneados** e precisam ser renderizados;
 o de 1979 tem 236 páginas. O mapa de páginas, para renderizar só o necessário, está
 em `agentes-quimicos.md`, seção 2.
+
+Benefícios por incapacidade, auxílio-acidente, BPC da pessoa com deficiência e
+aposentadoria PcD: o mapa dos dispositivos está em
+`../analise-medica/references/beneficios.md`, seção 7.
+
+**Lacuna conhecida — pessoa com deficiência:** a LC 142/2013 e a Lei 13.146/2015
+(Estatuto da Pessoa com Deficiência) **não estão no acervo**. A aposentadoria PcD se
+apoia no Decreto 3.048 (arts. 70-A a 70-I) e na IN 128 (arts. 303 a 315), que estão;
+o que só a lei complementar resolve fica **pendente de conferência**.
 
 **Lacuna conhecida:** o PDF do Decreto 3.048/99 não traz o **Anexo IV** (agentes
 nocivos a partir de 1997), e o Decreto 2.172/97 não está no acervo. Enquadramento

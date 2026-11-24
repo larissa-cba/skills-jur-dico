@@ -30,6 +30,13 @@ por classe de talhão; empregador com objeto agropecuário ou florestal. Ver
 O resto desta referência trata do **acréscimo** de tempo rural, que é o caso quando
 a atividade não está registrada.
 
+**Enquadramento legal.** Se a atividade se enquadra como segurado especial —
+produtor rural ou **pescador artesanal**, individualmente ou em **regime de economia
+familiar** —, quem integra o grupo familiar, o que descaracteriza e como o INSS
+comprova (Ofício-Circular 46/DIRBEN e autodeclarações) está em
+`segurado-especial.md`. A leitura dos documentos desta referência vale igualmente
+para a pesca artesanal, com os documentos próprios listados lá.
+
 Documento em nome de terceiro **não é imprestável**. Em regime de economia familiar,
 o que importa é o vínculo do cliente com o titular do documento, a composição do
 grupo familiar, o período, a atividade e a compatibilidade com as demais provas.
@@ -130,6 +137,25 @@ pontos que dependem de prova testemunhal ou documental complementar.
 > isolada de um documento em nome dos pais. A conclusão considera idade, contexto
 > familiar, atividade efetiva e a legislação e jurisprudência do período — que se
 > consultam, não se afirmam de memória.
+
+## Quantos documentos bastam — critério do escritório
+
+**Não se exige documento ano a ano.** O período não precisa estar coberto ano por
+ano; o que se avalia é se o conjunto documental, somado à prova testemunhal,
+sustenta o período alegado. Ano sem documento próprio dentro do período **não é
+lacuna** por si só.
+
+**Rural na infância e na adolescência.** Um documento **contemporâneo** ao período
+alegado que demonstre a atividade rural **dos pais** já é suficiente para seguir com
+o processo, **desde que haja testemunhas**. A existência de testemunhas é ponto a
+**conversar com o cliente** — quem são, se conheceram a família e o trabalho no
+período, se estão dispostas a depor. Enquanto isso não estiver conversado, o
+período fica condicionado à prova testemunhal e a conversa vira providência.
+
+**Rural na vida adulta.** O documento pode estar em nome do **cônjuge**. O ideal é
+ter **mais de um documento**, principalmente documentos que demonstrem o **início**
+e o **fim** do período. Aqui o número de documentos pesa mais do que na infância:
+quanto mais longo o período adulto, mais documentos são necessários para sustentá-lo.
 
 ## Classificação dos períodos
 
