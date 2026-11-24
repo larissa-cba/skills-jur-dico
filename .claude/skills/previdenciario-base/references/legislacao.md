@@ -40,6 +40,15 @@ Leitura: quase todos têm texto — use `scripts/ler-pdf.sh` e busque o disposit
 o de 1979 tem 236 páginas. O mapa de páginas, para renderizar só o necessário, está
 em `agentes-quimicos.md`, seção 2.
 
+Benefícios por incapacidade, auxílio-acidente, BPC da pessoa com deficiência e
+aposentadoria PcD: o mapa dos dispositivos está em
+`../analise-medica/references/beneficios.md`, seção 7.
+
+**Lacuna conhecida — pessoa com deficiência:** a LC 142/2013 e a Lei 13.146/2015
+(Estatuto da Pessoa com Deficiência) **não estão no acervo**. A aposentadoria PcD se
+apoia no Decreto 3.048 (arts. 70-A a 70-I) e na IN 128 (arts. 303 a 315), que estão;
+o que só a lei complementar resolve fica **pendente de conferência**.
+
 **Lacuna conhecida:** o PDF do Decreto 3.048/99 não traz o **Anexo IV** (agentes
 nocivos a partir de 1997), e o Decreto 2.172/97 não está no acervo. Enquadramento
 de período posterior a 05/03/1997 por código do Anexo IV fica **pendente de
