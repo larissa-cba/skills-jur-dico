@@ -16,6 +16,7 @@ dois lugares — e esquecer num deles.
 | `analise-inicial` | ficha de análise inicial no padrão do escritório |
 | `planejamento` | relatório de planejamento previdenciário em três níveis |
 | `analise-ppp` | análise de PPP recebido no curso do processo, comparação entre versões e validação do cálculo |
+| `analise-rural` | controle vivo da prova do tempo rural e da pesca artesanal: enquadramento como segurado especial em economia familiar, período controvertido, graduação de cada documento e de cada trecho, atualização a cada chegada |
 
 Os caminhos nas skills são relativos: `../previdenciario-base/...`. Funciona tanto
 no repositório do projeto quanto em `~/.claude/skills`, desde que esta pasta fique
@@ -34,6 +35,8 @@ ao lado das skills que a usam.
 | `ler-docx.ps1` | lê um `.docx` de volta para a mesma marcação do `gerar-docx.ps1` — usado para atualizar a ficha sem reescrevê-la à mão |
 | `aplicar-timbrado.ps1` | escreve um texto marcado dentro do papel timbrado do escritório, preservando cabeçalho, rodapé e logotipo; tem bloco de assinaturas lado a lado |
 | `html-para-pdf.ps1` | converte uma página HTML/CSS em PDF usando o Edge instalado, em modo headless |
+| `listar-campos-pdf.ps1` | lista os campos de um PDF preenchível (nome, página, tipo, posição, opções, valor atual) |
+| `preencher-pdf-form.ps1` | preenche um PDF preenchível a partir de um JSON, por atualização incremental, sem Python nem pdftk — usado para a autodeclaração de segurado especial |
 
 ### `references/`
 
@@ -47,6 +50,8 @@ Doutrina de leitura, uma por tipo de documento. Carregue só a que o caso pedir.
 | `ppp.md` | tempo especial, agentes nocivos, EPI, responsável técnico |
 | `agentes-quimicos.md` | produto × composto, régua por período, mapa dos decretos de 1964 e 1979, NR-15, NR-16 e LINACH |
 | `rural.md` | linha do tempo rural, prova material, atividade na infância |
+| `autodeclaracao-campos.md` | mapa campo a campo dos formulários de autodeclaração rural e do pescador (Ofício 46), para preenchimento automático |
+| `segurado-especial.md` | enquadramento como segurado especial (produtor rural e pescador artesanal), economia familiar, descaracterização, Ofício-Circular 46/DIRBEN, autodeclarações e súmulas |
 | `dtc-ctc.md` | contagem recíproca, utilização anterior, concomitância |
 | `legislacao.md` | acervo do escritório e a regra de nunca afirmar lei de memória |
 | `ambiente.md` | ferramentas, caminhos e limites desta máquina |

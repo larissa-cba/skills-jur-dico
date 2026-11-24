@@ -25,6 +25,15 @@ Conteúdo:
 | `nr-15-atualizada-2025.pdf` e `nr-15-anexo-*.pdf` | NR-15: limites de tolerância e atividades insalubres por agente |
 | `nr-16-atualizada-2025-ii.pdf` | NR-16: atividades perigosas |
 | `portaria_092014-LINACH.pdf` | LINACH — lista nacional de agentes cancerígenos, com CAS |
+| `ofcircular46DIRBEN-INSS3.pdf` | Ofício-Circular nº 46/DIRBEN/INSS, de 13/09/2019 — comprovação da atividade de segurado especial após a Lei 13.846/2019 |
+| `anexo_i___autodeclaracao_do_segurado_especial_rural.pdf` | Anexo I do Ofício 46 — autodeclaração do segurado especial rural |
+| `autodeclaracao-do-segurado-especial-pescador-pdf.pdf` | Anexo II do Ofício 46 — autodeclaração do segurado especial pescador |
+
+Segurado especial (produtor rural, pescador artesanal, economia familiar): o mapa dos
+dispositivos de todos esses arquivos está em `segurado-especial.md`.
+
+**Súmulas da TNU:** a extração com `-layout` desalinha número e texto das súmulas.
+Para citar número, extraia com `pdftotext -raw` e confira.
 
 Leitura: quase todos têm texto — use `scripts/ler-pdf.sh` e busque o dispositivo.
 **Os dois decretos de 1964 e 1979 são escaneados** e precisam ser renderizados;
